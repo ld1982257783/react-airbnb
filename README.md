@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# reaact-project 项目实战
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  1.1 搭建项目骨架
 
-## Available Scripts
+![Image text](./images/1.jpg)
+![Image text](./images/2.jpg)
 
-In the project directory, you can run:
+  2.1 配置项目别名
 
-### `npm start`
+```js
+    1 方案1 暴露 webconfig 配置 
+        npm run eject
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    2 方案2 craco => create-react-app config
+        会将自定义配置和webconfig的配置进行合并
+        npm install @craco/craco@alpha -D
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+        1) 创建文件夹 craco.config.js
+            const path = require("path")
+            const resolve = pathname => path.resolve(__dirname, pathname)
+            module.exports = {
+                // webpack
+                webpack: {
+                    alias: {
+                        "@": resolve("src"),
+                        "components": resolve("src/components"),
+                        "utils": resolve("src/utils")
+                    }
+                }
+            }
 
-### `npm test`
+        2) 修改 package.json 的script脚本
+            "scripts": {
+                "start": "craco start",
+                "build": "craco build",
+                "test": "craco test",
+                "eject": "react-scripts eject"
+            }
+     
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  3.1 craco 配置less
 
-### `npm run build`
+```js
+    1 安装
+        npm i craco-less@2.1.0-alpha.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    2 craco.config.js 进行引入使用
+        const resolve = pathname => path.resolve(__dirname, pathname)
+        module.exports = {
+            plugins: [
+                {
+                    plugin: CracoLessPlugin
+                }
+            ],
+        }
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  4.1 Css样式的重置
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+    1 npm install normalize.css
+    2 import "normalize.css"
+```
 
-### `npm run eject`
+  5.1 全家桶-router的配置
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
+    1 npm install react-router-dom
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  5.2 全家桶-redux状态管理
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```js
+    npm install @reduxjs/toolkit react-redux
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  6.1 axios 的配置
 
-## Learn More
+```js
+    npm install axios
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  7.1 CSS-IN-JS 封装
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+    npm install styled-components
+```
 
-### Code Splitting
+## 集成 UI 组件库
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  1.1 react 集成 ant-design
 
-### Analyzing the Bundle Size
+```js
+    npm install antd --save
+```
+  
+  2.1 react 集成 Material UI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```js
+    npm install @mui/material @emotion/react @emotion/styled
+    npm install @mui/material @mui/styled-engine-sc styled-components
+```
 
-### Making a Progressive Web App
+## 集成 classnames 方便动态集成classname
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```js
+  npm install classnames
+```
 
-### Advanced Configuration
+## 集成动画  react-transition-group
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```js
+  npm install react-transition-group
+```
 
-### Deployment
+## 集成 防抖节流库
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```js
+  npm install underscore
+```
