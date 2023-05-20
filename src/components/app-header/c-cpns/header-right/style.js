@@ -57,7 +57,7 @@ export const RightWrapper = styled.div`
       border-radius: 10px;
       box-shadow: 0 0 2px 4px rgba(0, 0, 0, 0.2);
 
-      .top,
+      .tops,
       .bottom {
         padding: 10px 0;
 
@@ -72,7 +72,7 @@ export const RightWrapper = styled.div`
         }
       }
 
-      .top {
+      .tops {
         border-bottom: 1px solid #ddd;
       }
     }
